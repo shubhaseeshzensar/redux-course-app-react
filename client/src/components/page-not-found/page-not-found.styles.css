@@ -1,0 +1,23 @@
+.error-page{
+    margin-top: 20px;
+    align-items: center;
+    height: 35rem;
+    background-image: url('../../assets/error-404.png');
+    background-size:contain;
+    background-repeat: no-repeat;
+}
+.error-page-button{
+    margin: 30%;
+    width: 300px;
+    height: 40px;
+    color: black;
+    border-style: none;
+    font-size: x-large;
+}
+.error-page p{
+    color:rgb(10, 4, 4);
+    font-size: larger;
+    font-size: 40px;
+    margin-left: 20%;
+}
+
