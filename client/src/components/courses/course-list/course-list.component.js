@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
+
+import DeleteButton from "../buttons/delete-button.component";
+import EditButton from "../buttons/edit-button.component";
 
 const CourseList = ({ courses }) => {
+
   return (
     <table className="table table-horizontal mt-4">
       <thead className="table-success">
@@ -22,10 +26,10 @@ const CourseList = ({ courses }) => {
               <td>{course.authorId}</td>
               <td>{course.category}</td>
               <td>
-                <button className="btn btn-block">Edit</button>
+                <EditButton />
               </td>
               <td>
-                <button className="btn btn-block">Delete</button>
+                <DeleteButton course={course} />
               </td>
             </tr>
           );

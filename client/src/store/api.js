@@ -10,9 +10,9 @@ export const addNewCourse = (course) =>
       console.log(error);
     });
 
-export const deleteCourse = (id) => {
-  return axios.delete(`http://localhost:5000/api/delete/${id}`);
-};
+export const deleteOneCourse = async (id) =>
+  await axios.delete(`http://localhost:5000/api/delete/${id}`);
+
 export const updateCourse = (id, course) => {
   return axios.put(`http://localhost:5000/api/update/${id}`, course);
 };

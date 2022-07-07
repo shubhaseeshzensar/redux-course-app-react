@@ -21,6 +21,13 @@ export const courseReducer = (state = COURSE_INITIAL_STATE, action) => {
         isCourseShown: payload,
       };
     }
+    case COURSE_ACTION_TYPES.DELETE_COURSE: {
+      return {
+        ...state,
+        courses: payload,
+      };
+    }
+
 
     default:
       return state;

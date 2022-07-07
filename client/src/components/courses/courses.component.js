@@ -17,7 +17,7 @@ const Courses = () => {
   return (
     <div className="courses-container">
       <CourseForm courses={courses} />
-      {isCourseShown ? <CourseList courses={courses} /> : <h3></h3>}
+      {isCourseShown && <CourseList courses={courses} />}
     </div>
   );
 };
