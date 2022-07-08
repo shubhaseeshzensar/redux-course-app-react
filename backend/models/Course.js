@@ -21,9 +21,7 @@ let Course = new Schema(
       required: true,
     },
   }
-  // {
-  //   collection: "courses",
-  // }
+ 
 );
 
 module.exports = mongoose.model("courses", Course);

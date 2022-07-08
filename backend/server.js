@@ -24,7 +24,7 @@ mongoose
 // Setting up port with express js
 
 const courseRoute = require("./routes/course.route");
-const { db } = require("./models/Course");
+
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
@@ -35,8 +35,7 @@ app.use(
 // cors implementation
 
 app.use(cors());
-// app.use(express.static(path.join(__dirname, "dist/mean-stack-crud-app")));
-// app.use("/", express.static(path.join(__dirname, "dist/mean-stack-crud-app")));
+
 app.use("/api", courseRoute);
 
 // Create port

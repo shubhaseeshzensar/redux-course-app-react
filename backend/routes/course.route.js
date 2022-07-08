@@ -4,8 +4,6 @@ const router = express.Router();
 // Course model
 let Course = require("../models/Course");
 
-
-
 // Add Course
 router.route("/create").post((req, res, next) => {
   Course.create(req.body, (error, data) => {
@@ -28,7 +26,16 @@ router.route("/").get((req, res) => {
   });
 });
 
-
+// Get One Course
+router.route("/read/:id").get((req, res) => {
+  Course.findById(req.params.id, (error, data) => {
+    if (error) {
+      return next(error);
+    } else {
+      res.json(data);
+    }
+  });
+});
 
 // Update Course
 router.route("/update/:id").put((req, res, next) => {
@@ -51,7 +58,7 @@ router.route("/update/:id").put((req, res, next) => {
 
 // Delete employee
 router.route("/delete/:id").delete((req, res, next) => {
-  Course.findOneAndRemove(req.params.id, (error, data) => {
+  Course.findOneAndRemove({ _id: req.params.id }, (error, data) => {
     if (error) {
       return next(error);
     } else {
