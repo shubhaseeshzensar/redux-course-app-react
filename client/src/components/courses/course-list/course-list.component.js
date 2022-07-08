@@ -1,10 +1,24 @@
 import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  deleteOneCourse,
+  loadCourses,
+} from "../../../store/course/course.action";
+import { selectCourses } from "../../../store/course/course.selector";
 
-import DeleteButton from "../buttons/delete-button.component";
-import EditButton from "../buttons/edit-button.component";
+const CourseList = () => {
+  const courses = useSelector(selectCourses);
 
-const CourseList = ({ courses }) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadCourses());
+  }, []);
 
+  const courseDeleteHandler = (id) => {
+    if (window.confirm("Are you sure to delete ? ")) {
+      dispatch(deleteOneCourse(id));
+    }
+  };
   return (
     <table className="table table-horizontal mt-4">
       <thead className="table-success">
@@ -18,22 +32,31 @@ const CourseList = ({ courses }) => {
         </tr>
       </thead>
       <tbody>
-        {courses.map((course) => {
-          return (
-            <tr key={course._id}>
-              <th scope="row">{course.title}</th>
-              <td>{course.slug}</td>
-              <td>{course.authorId}</td>
-              <td>{course.category}</td>
-              <td>
-                <EditButton />
-              </td>
-              <td>
-                <DeleteButton course={course} />
-              </td>
-            </tr>
-          );
-        })}
+        {courses &&
+          courses.map((course) => {
+            return (
+              <tr key={course._id}>
+                <th scope="row">{course.title}</th>
+                <td>{course.slug}</td>
+                <td>{course.authorId}</td>
+                <td>{course.category}</td>
+                <td>
+                  <button type="button" className="btn btn-info">
+                    Edit
+                  </button>
+                </td>
+                <td>
+                  <button
+                    type="button"
+                    className="btn btn-info"
+                    onClick={() => courseDeleteHandler(course._id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            );
+          })}
       </tbody>
     </table>
   );

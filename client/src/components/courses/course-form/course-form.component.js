@@ -1,18 +1,11 @@
 import React from "react";
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { selectIsCoursesShown } from "../../../store/course/course.selector";
-import {
-  setCourse,
-  setIsCoursesShown,
-} from "../../../store/course/course.action";
 import "./course-form.styles.css";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addOneCourse } from "../../../store/course/course.action";
 
 const CourseForm = () => {
   const dispatch = useDispatch();
-
-  const isCourseShown = useSelector(selectIsCoursesShown);
 
   const [userInput, setUserInput] = useState({
     enteredcourseTitle: "",
@@ -53,7 +46,8 @@ const CourseForm = () => {
       authorId: userInput.enteredcourseAuthorId,
       category: userInput.enteredcourseCategory,
     };
-    dispatch(setCourse(courseToAdd));
+
+    dispatch(addOneCourse(courseToAdd));
 
     setUserInput(() => {
       return {
@@ -63,9 +57,6 @@ const CourseForm = () => {
         enteredcourseCategory: "",
       };
     });
-  };
-  const courseShownHandler = () => {
-    dispatch(setIsCoursesShown(!isCourseShown));
   };
 
   return (
@@ -109,9 +100,6 @@ const CourseForm = () => {
       <div className="action">
         <button type="submit" className="button">
           Add New Course
-        </button>
-        <button type="button" onClick={courseShownHandler} className="button">
-          {!isCourseShown ? `Show Courses` : `Hide Courses`}
         </button>
       </div>
     </form>

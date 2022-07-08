@@ -3,14 +3,14 @@
     border: 1px solid black;
 }
 .control {
-  margin: 0.5rem 40px;
+  margin: 0.1rem 40px;
   border-color: #d2088e;
 }
 
 .control label {
   font-weight: bold;
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
 }
 
 .control input {

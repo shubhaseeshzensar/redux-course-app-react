@@ -1,33 +1,32 @@
 import { COURSE_ACTION_TYPES } from "./course.type";
 
 const COURSE_INITIAL_STATE = {
-  isCourseShown: false,
   courses: [],
+  loading: false,
 };
 
 export const courseReducer = (state = COURSE_INITIAL_STATE, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case COURSE_ACTION_TYPES.SET_COURSE: {
+    case COURSE_ACTION_TYPES.GET_ALL_COURSE: {
       return {
         ...state,
         courses: payload,
+        loading: false,
       };
     }
-    case COURSE_ACTION_TYPES.SET_IS_COURSE_SHOWN: {
+    case COURSE_ACTION_TYPES.SET_COURSE: {
       return {
         ...state,
-        isCourseShown: payload,
       };
     }
     case COURSE_ACTION_TYPES.DELETE_COURSE: {
       return {
         ...state,
-        courses: payload,
+        loading: false,
       };
     }
-
 
     default:
       return state;
