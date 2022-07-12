@@ -27,6 +27,13 @@ export const courseReducer = (state = COURSE_INITIAL_STATE, action) => {
         loading: false,
       };
     }
+    case COURSE_ACTION_TYPES.UPDATE_COURSE: {
+      return {
+        ...state,
+        
+        loading: false,
+      };
+    }
 
     default:
       return state;

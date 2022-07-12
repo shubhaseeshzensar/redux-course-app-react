@@ -6,9 +6,9 @@ export const getCourse = async () =>
 export const addCourse = async (course) =>
   await axios.post("http://localhost:5000/api/create", course);
 
-export const deleteCourse = (id) =>
-  axios.delete(`http://localhost:5000/api/delete/${id}`);
+export const deleteCourse =async (id) =>
+  await  axios.delete(`http://localhost:5000/api/delete/${id}`);
 
-export const updateCourse = (id, course) => {
-  return axios.put(`http://localhost:5000/api/update/${id}`, course);
+export const updateCourse =async (id, courseToUpdate) => {
+  await axios.put(`http://localhost:5000/api/update/${id}`, courseToUpdate);
 };
